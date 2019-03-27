@@ -21,7 +21,7 @@ class MyWindow(QMainWindow, Ui_Form):
     def get_com(self):
         port_list = list(serial.tools.list_ports.comports())
         for x in port_list:
-            self.comboBox.addItem(list(x)[0])
+            self.comboBox.addItem(str(x))
     def get_bin(self):
         for root,dirs,files in os.walk(os.getcwd()):
             for file in files:
