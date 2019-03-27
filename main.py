@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 #by:youxinweizhi
 #QQ:416895063
-import serial
-import serial.tools.list_ports
+import control
 import sys,os
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from mainWindow import Ui_Form
@@ -19,43 +18,22 @@ class MyWindow(QMainWindow, Ui_Form):
         self.get_com()
         self.get_bin()
     def get_com(self):
-        port_list = list(serial.tools.list_ports.comports())
-        for x in port_list:
-            self.comboBox.addItem(str(x))
+        self.comboBox.addItems(control.list_serial())
     def get_bin(self):
-        for root,dirs,files in os.walk(os.getcwd()):
-            for file in files:
-              if os.path.splitext(file)[1] == '.bin':
-                self.comboBox_2.addItem(file)
+        self.comboBox_2.addItems(control.list_bin())
+
     def erase_flash(self):
-        res=os.system("esptool.exe --port %s erase_flash " %(self.com))
-        if res ==0:
-            self.status='Flash已经清空'
-            self.statusBar().showMessage(self.status)
-        else:
-            self.status='Flash清空失败'
-            self.statusBar().showMessage(self.status)
-        self.statusBar().showMessage('开始刷新固件')
+        self.statusBar().showMessage(control.flash_erase(self.com))
         self.flasher()
     def flasher(self):
-        if self.checkBox.isChecked():
-            res=os.system("esptool.exe --port %s --baud 115200 write_flash --flash_size=detect 0 %s " %(self.com,self.firmware))
-        else:
-            res=os.system("esptool.exe --chip esp32 --port %s --baud 115200 write_flash -z 0x1000  %s " %(self.com,self.firmware))
+        self.statusBar().showMessage('开始刷新固件')
+        self.statusBar().showMessage(control.flash_bin(self.checkBox_2.isChecked(),self.com,self.firmware))
 
-        if res ==0:
-            self.status='固件刷新成功'
-            self.statusBar().showMessage(self.status)
-
-        else:
-            self.status='固件刷新失败'
-            self.statusBar().showMessage(self.status)
     def main(self):
         self.com=self.comboBox.currentText()
         self.firmware=self.comboBox_2.currentText()
         if self.checkBox.isChecked():
-            self.status='清空flash.....'
-            self.statusBar().showMessage(self.status)
+            self.statusBar().showMessage('清空flash.....')
             t1=threading.Thread(target=self.erase_flash)
             t1.start()
         else:
@@ -63,6 +41,8 @@ class MyWindow(QMainWindow, Ui_Form):
             self.statusBar().showMessage(self.status)
             t=threading.Thread(target=self.flasher)
             t.start()
+        # self.statusBar().showMessage(control.run(self.checkBox.isChecked(),self.erase_flash(),self.flasher()))
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
