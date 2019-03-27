@@ -13,7 +13,7 @@ class Ui_Form(object):
         Form.setObjectName("Form")
         Form.resize(334, 115)
         self.pushButton = QtWidgets.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(250, 80, 75, 23))
+        self.pushButton.setGeometry(QtCore.QRect(240, 90, 75, 23))
         self.pushButton.setObjectName("pushButton")
         self.comboBox = QtWidgets.QComboBox(Form)
         self.comboBox.setGeometry(QtCore.QRect(110, 10, 211, 22))
@@ -35,17 +35,22 @@ class Ui_Form(object):
         font.setPointSize(12)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
-
+        self.checkBox = QtWidgets.QCheckBox(Form)
+        self.checkBox.setGeometry(QtCore.QRect(240, 60, 101, 21))
+        self.checkBox.setObjectName("checkBox")
+        self.checkBox_2 = QtWidgets.QCheckBox(Form)
+        self.checkBox_2.setGeometry(QtCore.QRect(160, 60, 71, 21))
+        self.checkBox_2.setObjectName("checkBox_2")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
-
-
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "BPI-Bit"))
+        Form.setWindowTitle(_translate("Form", "Mpyflasher  by:youxinweizhi"))
         self.pushButton.setText(_translate("Form", "Flash"))
         self.label.setText(_translate("Form", "COM-port"))
         self.label_3.setText(_translate("Form", "Firmware"))
+        self.checkBox.setText(_translate("Form", "erase flash"))
+        self.checkBox_2.setText(_translate("Form", "esp8266"))
 

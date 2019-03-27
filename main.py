@@ -1,31 +1,23 @@
-
-import sys
-import os
-# os.system('esptool.exe --chip esp32 --port com5 erase_flash')
-# os.system('esptool.exe --chip esp32 --port com5 --baud 460800 write_flash -z 0x1000 esp32-20190125-v1.10.binesp32-20190125-v1.10.bin')
-# res=os.system("esptool.exe erase_flash")
-# os.system('esptool.exe --port com5 --baud 115200 write_flash --flash_size=detect 0 esp8266-20180126-v1.9.3-240-ga275cb0f.bin')
-# print(res)
+# -*- coding: utf-8 -*-
+#by:youxinweizhi
+#QQ:416895063
 import serial
 import serial.tools.list_ports
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow,QToolTip,QMessageBox
+import sys,os
+from PyQt5.QtWidgets import QApplication, QMainWindow
 from mainWindow import Ui_Form
-from PyQt5.QtCore import Qt
-
+import threading
 #导入图标和字体库
 from PyQt5.QtGui import QIcon,QFont
+
 class MyWindow(QMainWindow, Ui_Form):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.pushButton.clicked.connect(self.test)
-        #增加图标
+        self.pushButton.clicked.connect(self.main)
         self.setWindowIcon(QIcon('icon.ico'))
-        self.Base_PAth=os.getcwd()
         self.get_com()
         self.get_bin()
-
     def get_com(self):
         port_list = list(serial.tools.list_ports.comports())
         for x in port_list:
@@ -35,16 +27,43 @@ class MyWindow(QMainWindow, Ui_Form):
             for file in files:
               if os.path.splitext(file)[1] == '.bin':
                 self.comboBox_2.addItem(file)
-    def test(self):
-        self.statusBar().showMessage('开始刷新固件.....')
-        com=self.comboBox.currentText()
-        firmware=self.comboBox_2.currentText()
-        print(com,firmware)
-        res=os.system("esptool.exe --port %s --baud 115200 write_flash --flash_size=detect 0 %s " %(com,firmware))
+    def erase_flash(self):
+        res=os.system("esptool.exe --port %s erase_flash " %(self.com))
         if res ==0:
-            self.statusBar().showMessage('固件刷新成功')
+            self.status='Flash已经清空'
+            self.statusBar().showMessage(self.status)
         else:
-            self.statusBar().showMessage('固件刷新失败')
+            self.status='Flash清空失败'
+            self.statusBar().showMessage(self.status)
+        self.statusBar().showMessage('开始刷新固件')
+        self.flasher()
+    def flasher(self):
+        if self.checkBox.isChecked():
+            res=os.system("esptool.exe --port %s --baud 115200 write_flash --flash_size=detect 0 %s " %(self.com,self.firmware))
+        else:
+            res=os.system("esptool.exe --chip esp32 --port %s --baud 115200 write_flash -z 0x1000  %s " %(self.com,self.firmware))
+
+        if res ==0:
+            self.status='固件刷新成功'
+            self.statusBar().showMessage(self.status)
+
+        else:
+            self.status='固件刷新失败'
+            self.statusBar().showMessage(self.status)
+    def main(self):
+        self.com=self.comboBox.currentText()
+        self.firmware=self.comboBox_2.currentText()
+        if self.checkBox.isChecked():
+            self.status='清空flash.....'
+            self.statusBar().showMessage(self.status)
+            t1=threading.Thread(target=self.erase_flash)
+            t1.start()
+        else:
+            self.status='开始刷新固件.....'
+            self.statusBar().showMessage(self.status)
+            t=threading.Thread(target=self.flasher)
+            t.start()
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     myWin = MyWindow()
