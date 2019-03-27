@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+#by:youxinweizhi
+#QQ:416895063
 # Form implementation generated from reading ui file 'untitled.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.3
@@ -11,9 +12,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(334, 115)
+        Form.resize(334, 120)
         self.pushButton = QtWidgets.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(240, 90, 75, 23))
+        self.pushButton.setGeometry(QtCore.QRect(240, 80, 75, 23))
         self.pushButton.setObjectName("pushButton")
         self.comboBox = QtWidgets.QComboBox(Form)
         self.comboBox.setGeometry(QtCore.QRect(110, 10, 211, 22))
@@ -22,7 +23,7 @@ class Ui_Form(object):
         self.label.setGeometry(QtCore.QRect(20, 0, 71, 41))
         font = QtGui.QFont()
         font.setFamily("宋体")
-        font.setPointSize(12)
+        font.setPointSize(10)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.comboBox_2 = QtWidgets.QComboBox(Form)
@@ -32,7 +33,7 @@ class Ui_Form(object):
         self.label_3.setGeometry(QtCore.QRect(20, 30, 71, 41))
         font = QtGui.QFont()
         font.setFamily("宋体")
-        font.setPointSize(12)
+        font.setPointSize(10)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.checkBox = QtWidgets.QCheckBox(Form)
@@ -47,10 +48,10 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Mpyflasher  by:youxinweizhi"))
+        Form.setWindowTitle(_translate("Form", " MpyFlasher"))
         self.pushButton.setText(_translate("Form", "Flash"))
-        self.label.setText(_translate("Form", "COM-port"))
-        self.label_3.setText(_translate("Form", "Firmware"))
+        self.label.setText(_translate("Form", "串口："))
+        self.label_3.setText(_translate("Form", "固件："))
         self.checkBox.setText(_translate("Form", "erase flash"))
         self.checkBox_2.setText(_translate("Form", "esp8266"))
 

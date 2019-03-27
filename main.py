@@ -2,19 +2,19 @@
 #by:youxinweizhi
 #QQ:416895063
 import control
-import sys,os
+import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from mainWindow import Ui_Form
-import threading
-#导入图标和字体库
-from PyQt5.QtGui import QIcon,QFont
+#import threading
+from PyQt5.QtGui import QIcon
 
 class MyWindow(QMainWindow, Ui_Form):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.pushButton.clicked.connect(self.main)
-        self.setWindowIcon(QIcon('icon.ico'))
+        self.setWindowIcon(QIcon('./imager/icon.ico'))
+        self.statusBar().showMessage("   QQ: 416895063")
         self.get_com()
         self.get_bin()
     def get_com(self):
