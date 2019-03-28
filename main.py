@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from mainWindow import Ui_Form
 # import threading
 from PyQt5.QtGui import QIcon
-
+import PyQt5.QtCore
 
 class MyWindow(QMainWindow, Ui_Form):
     def __init__(self):
@@ -20,6 +20,7 @@ class MyWindow(QMainWindow, Ui_Form):
         self.setupUi(self)
         self.pushButton.clicked.connect(self.main)
         self.checkBox_3.stateChanged.connect(self.disable_cb2)
+        self.setFixedSize(self.width(), self.height())#固定窗口大小
         self.setWindowIcon(QIcon('./image/icon.ico'))
         self.statusBar().showMessage(" by: youxinweizhi")
         self.get_com()
