@@ -7,6 +7,7 @@
 @Github :https://github.com/youxinweizhi
 '''
 import sys, os, traceback
+import esptool
 
 # print(sys.path) # 查找依赖的目录
 cwd = os.getcwd()
@@ -20,9 +21,11 @@ except Exception as e:
 
 def flash_bin(port):
     try:
-        return esp_config.run(port)
+        esp_config.flash(port)
     except Exception as e:
         return traceback.format_exc()
 
 if __name__ == '__main__':
     print(flash_bin('com3'))
+    import esp_config
+    esp_config.flash('com3')

@@ -6,8 +6,9 @@
 @Date   :2019/3/28
 @Github :https://github.com/youxinweizhi
 '''
+import os
 
-def run(com):
+def flash(com):
 
     FLASH_START = "0x1000"
     FLASH_MODE = "dio"
@@ -22,14 +23,14 @@ def run(com):
         '--flash_mode', FLASH_MODE,
         '--flash_size', '4MB',
         '--flash_freq', FLASH_FREQ,
-        FLASH_START, 'ts'
+        FLASH_START, os.getcwd() + '\\firmware.bin'
     ]
+
     try:
         from esptool import main
         main()
-        return True
     except Exception as e:
-        return False
+        print(e)
 
 if __name__ == '__main__':
-    run('com3')
+    flash('com3')
