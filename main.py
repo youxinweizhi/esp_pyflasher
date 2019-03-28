@@ -1,11 +1,15 @@
-# -*- coding: utf-8 -*-
-#by:youxinweizhi
-#QQ:416895063
+#!/usr/bin/env python
+# coding: utf-8
+'''
+@File   :main.py
+@Author :youxinweizhi
+@Date   :2019/3/28
+@Github :https://github.com/youxinweizhi
+'''
 import control
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from mainWindow import Ui_Form
-#import threading
 from PyQt5.QtGui import QIcon
 
 class MyWindow(QMainWindow, Ui_Form):

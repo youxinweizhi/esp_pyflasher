@@ -1,6 +1,11 @@
-# -*- coding: utf-8 -*-
-#by:youxinweizhi
-#QQ:416895063
+#!/usr/bin/env python
+# coding: utf-8
+'''
+@File   :control.py
+@Author :youxinweizhi
+@Date   :2019/3/28
+@Github :https://github.com/youxinweizhi
+'''
 import os
 import serial.tools.list_ports
 import threading
@@ -14,7 +19,6 @@ def list_bin():
     result = []
     for root, dirs, files in os.walk(os.getcwd()):
         result += [file for file in files if os.path.splitext(file)[1] == '.bin']
-    # print(result)
     return result
 
 

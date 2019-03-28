@@ -1,10 +1,11 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'untitled.ui'
-#
-# Created by: PyQt5 UI code generator 5.11.3
-#
-# WARNING! All changes made in this file will be lost!
+#!/usr/bin/env python
+# coding: utf-8
+'''
+@File   :AutoErase.py
+@Author :youxinweizhi
+@Date   :2019/3/28
+@Github :https://github.com/youxinweizhi
+'''
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
