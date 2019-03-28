@@ -13,10 +13,18 @@ class MyWindow(QMainWindow, Ui_Form):
         super().__init__()
         self.setupUi(self)
         self.pushButton.clicked.connect(self.main)
+        self.checkBox_3.stateChanged.connect(self.disable_cb2)
         self.setWindowIcon(QIcon('./imager/icon.ico'))
-        self.statusBar().showMessage("   QQ: 416895063")
+        self.statusBar().showMessage("   by: youxinweizhi")
         self.get_com()
         self.get_bin()
+    def disable_cb2(self):
+        if self.checkBox_3.isChecked():
+            self.comboBox_2.setDisabled(True)
+        else:
+            self.comboBox_2.setDisabled(False)
+
+
     def get_com(self):
         self.comboBox.addItems(control.list_serial())
     def get_bin(self):
@@ -33,16 +41,6 @@ class MyWindow(QMainWindow, Ui_Form):
     def main(self):
         self.com=self.comboBox.currentText()
         self.firmware=self.comboBox_2.currentText()
-        # if self.checkBox.isChecked():
-        #     self.statusBar().showMessage('清空flash.....')
-        #     t1=threading.Thread(target=self.erase_flash)
-        #     t1.start()
-        # else:
-        #     # self.status='开始刷新固件.....'
-        #     self.statusBar().showMessage(self.status)
-        #     t=threading.Thread(target=self.flasher)
-        #     t.start()
-
         self.statusBar().showMessage(control.run(self.checkBox.isChecked(),self.erase_flash,self.flasher))
 
 

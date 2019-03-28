@@ -57,4 +57,3 @@ class Ui_Form(object):
         self.checkBox.setText(_translate("Form", "eraseflash"))
         self.checkBox_2.setText(_translate("Form", "esp8266"))
         self.checkBox_3.setText(_translate("Form", "Auto"))
-
