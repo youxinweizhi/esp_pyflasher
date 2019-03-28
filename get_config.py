@@ -1,0 +1,20 @@
+import sys, os, traceback
+
+# print(sys.path) # 查找依赖的目录
+cwd = os.getcwd()
+# print(cwd, os.listdir()) # 定位到打开目录 而不是解压后的临时目录
+sys.path.append(os.getcwd())
+
+try:
+    exec("import esp_config")
+except Exception as e:
+    print(traceback.format_exc())
+
+def flash_bin(port):
+    try:
+        return esp_config.run(port)
+    except Exception as e:
+        return traceback.format_exc()
+
+if __name__ == '__main__':
+    print(flash_bin('com3'))

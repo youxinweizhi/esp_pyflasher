@@ -1,21 +1,13 @@
-#!/usr/bin/env python
-# coding: utf-8
-'''
-@File   :AutoErase.py
-@Author :youxinweizhi
-@Date   :2019/3/28
-@Github :https://github.com/youxinweizhi
-'''
-
+# coding:utf-8
 def run(com):
     from esptool import main
     import sys
     bak = sys.argv
     sys.argv = [
-            'AutoFlash.py',
-            '--port', com,
-            '--baud', '460800',
-            'erase_flash'
+        'AutoFlash.py',
+        '--port', com,
+        '--baud', '460800',
+        'erase_flash'
     ]
     try:
         main()

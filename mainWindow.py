@@ -1,13 +1,13 @@
-#!/usr/bin/env python
-# coding: utf-8
-'''
-@File   :AutoErase.py
-@Author :youxinweizhi
-@Date   :2019/3/28
-@Github :https://github.com/youxinweizhi
-'''
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'untitled.ui'
+#
+# Created by: PyQt5 UI code generator 5.11.3
+#
+# WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -51,10 +51,10 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", " Esp_Pyflasher"))
+        Form.setWindowTitle(_translate("Form", " Mpyflasher"))
         self.pushButton.setText(_translate("Form", "Flash"))
         self.label.setText(_translate("Form", "串口："))
         self.label_3.setText(_translate("Form", "固件："))
-        self.checkBox.setText(_translate("Form", "eraseflash"))
+        self.checkBox.setText(_translate("Form", "Erase"))
         self.checkBox_2.setText(_translate("Form", "esp8266"))
         self.checkBox_3.setText(_translate("Form", "Auto"))
