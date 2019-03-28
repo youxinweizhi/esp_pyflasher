@@ -1,6 +1,12 @@
-# -*- coding: utf-8 -*-
-# by:youxinweizhi
-# QQ:416895063
+#!/usr/bin/env python
+# coding: utf-8
+'''
+@File   :AutoErase.py
+@Author :youxinweizhi
+@Date   :2019/3/28
+@Github :https://github.com/youxinweizhi
+'''
+
 import os
 import serial.tools.list_ports
 import threading

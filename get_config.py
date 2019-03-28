@@ -1,3 +1,11 @@
+#!/usr/bin/env python
+# coding: utf-8
+'''
+@File   :AutoErase.py
+@Author :youxinweizhi
+@Date   :2019/3/28
+@Github :https://github.com/youxinweizhi
+'''
 import sys, os, traceback
 
 # print(sys.path) # 查找依赖的目录

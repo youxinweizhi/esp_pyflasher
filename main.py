@@ -1,6 +1,11 @@
-# -*- coding: utf-8 -*-
-# by:youxinweizhi
-# QQ:416895063
+#!/usr/bin/env python
+# coding: utf-8
+'''
+@File   :AutoErase.py
+@Author :youxinweizhi
+@Date   :2019/3/28
+@Github :https://github.com/youxinweizhi
+'''
 import control
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow

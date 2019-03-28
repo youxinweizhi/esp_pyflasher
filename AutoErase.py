@@ -1,4 +1,12 @@
-# coding:utf-8
+#!/usr/bin/env python
+# coding: utf-8
+'''
+@File   :AutoErase.py
+@Author :youxinweizhi
+@Date   :2019/3/28
+@Github :https://github.com/youxinweizhi
+'''
+
 def run(com):
     from esptool import main
     import sys
