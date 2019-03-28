@@ -9,8 +9,7 @@
 
 def run(com):
     from esptool import main
-    import sys
-    bak = sys.argv
+    import sys,traceback
     sys.argv = [
         'AutoFlash.py',
         '--port', com,
@@ -21,4 +20,5 @@ def run(com):
         main()
         return True
     except:
+        print(traceback.format_exc())
         return False

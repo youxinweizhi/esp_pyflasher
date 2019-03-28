@@ -12,7 +12,7 @@ def run(com, esp_type, firmware):
     FLASH_MODE = "dio"
     FLASH_FREQ = "40m"
     from esptool import main
-    import sys
+    import sys,traceback
     if esp_type == "esp8266":
         sys.argv = [
             'AutoFlash.py',
@@ -36,4 +36,5 @@ def run(com, esp_type, firmware):
         main()
         return True
     except:
+        print(traceback.format_exc())
         return False
