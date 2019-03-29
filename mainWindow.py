@@ -50,7 +50,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Esp_pyflasher"))
+        Form.setWindowTitle(_translate("Form", "esp_pyflasher"))
         self.pushButton.setText(_translate("Form", "Flash"))
         self.label.setText(_translate("Form", "串口："))
         self.label_3.setText(_translate("Form", "固件："))

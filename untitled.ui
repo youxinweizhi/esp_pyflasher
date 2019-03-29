@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Esp_pyflasher</string>
+   <string>esp_pyflasher</string>
   </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
