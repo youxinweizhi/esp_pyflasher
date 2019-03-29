@@ -10,9 +10,7 @@ import control
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from mainWindow import Ui_Form
-# import threading
 from PyQt5.QtGui import QIcon
-import PyQt5.QtCore
 
 class MyWindow(QMainWindow, Ui_Form):
     def __init__(self):
@@ -44,7 +42,6 @@ class MyWindow(QMainWindow, Ui_Form):
         self.comboBox_2.addItems(control.list_bin())
 
     def erase_flash(self):
-        # self.statusBar().showMessage('清空flash.....')
         self.statusBar().showMessage(control.flash_erase(self.com))
         self.flasher()
 
