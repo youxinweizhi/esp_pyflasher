@@ -42,7 +42,7 @@ class Ui_Form(object):
         self.checkBox_2.setGeometry(QtCore.QRect(180, 60, 71, 21))
         self.checkBox_2.setObjectName("checkBox_2")
         self.checkBox_3 = QtWidgets.QCheckBox(Form)
-        self.checkBox_3.setGeometry(QtCore.QRect(110, 60, 71, 21))
+        self.checkBox_3.setGeometry(QtCore.QRect(80, 60, 71, 21))
         self.checkBox_3.setObjectName("checkBox_3")
 
         self.retranslateUi(Form)
@@ -50,7 +50,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", " Mpyflasher"))
+        Form.setWindowTitle(_translate("Form", "Esp_pyflasher"))
         self.pushButton.setText(_translate("Form", "Flash"))
         self.label.setText(_translate("Form", "串口："))
         self.label_3.setText(_translate("Form", "固件："))

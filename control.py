@@ -56,4 +56,4 @@ def run(st, fun1, fun2):
     else:
         t = threading.Thread(target=fun2)
         t.start()
-    return "请等待！"
+    return "请等待..."
