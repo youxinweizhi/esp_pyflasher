@@ -48,7 +48,8 @@ class MyWindow(QMainWindow, Ui_Form):
         self.statusBar().showMessage(control.flash_bin(self.checkBox_2.isChecked(), self.com, self.firmware))
 
     def main(self):
-        self.com = self.comboBox.currentText()
+        self.com = self.comboBox.currentText().split(" - ",1)[0]
+        print(self.com)
         self.firmware = self.comboBox_2.currentText()
         self.statusBar().showMessage(control.run(self.checkBox.isChecked(), self.erase_flash, self.flasher))
 

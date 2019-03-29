@@ -15,8 +15,7 @@ import AutoFlash
 
 def list_serial():
     port_list = list(serial.tools.list_ports.comports())
-    return [str(x[0]) for x in port_list]
-
+    return [str(x) for x in port_list]
 
 def list_bin():
     result = []
