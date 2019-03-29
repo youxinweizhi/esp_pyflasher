@@ -52,14 +52,20 @@ class MyWindow(QMainWindow, Ui_Form):
         self.statusBar().showMessage('开始刷新固件...')
         self.statusBar().showMessage(control.flash_bin(self.checkBox_2.isChecked(), self.com, self.firmware))
 
+    def adv_flasher(self):
+        import advanced
+        self.statusBar().showMessage(advanced.flash_bin(self.com))
+
+    def adv(self):
+        import advanced
+        self.statusBar().showMessage(advanced.run(self.adv_flasher))
+
     def main(self):
         self.com = self.comboBox.currentText().split(" - ",1)[0]
         # print(self.com)
         self.firmware = self.comboBox_2.currentText()
         if self.checkBox_3.isChecked():
-            import get_config
-            self.statusBar().showMessage("请等待...")
-            self.statusBar().showMessage(get_config.flash_bin(self.com))
+            self.adv()
         else:
             self.statusBar().showMessage(control.run(self.checkBox.isChecked(), self.erase_flash, self.flasher))
 

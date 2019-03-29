@@ -7,8 +7,8 @@
 @Github :https://github.com/youxinweizhi
 '''
 import sys, os, traceback
-import esptool
 import esp_config
+import threading
 # print(sys.path) # 查找依赖的目录
 cwd = os.getcwd()
 # print(cwd, os.listdir()) # 定位到打开目录 而不是解压后的临时目录
@@ -29,3 +29,7 @@ def flash_bin(port):
         print(traceback.format_exc())
         return "固件刷新失败"
 
+def run(fun1):
+    t = threading.Thread(target=fun1)
+    t.start()
+    return "请等待..."
