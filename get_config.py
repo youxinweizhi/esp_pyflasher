@@ -8,7 +8,7 @@
 '''
 import sys, os, traceback
 import esptool
-
+import esp_config
 # print(sys.path) # 查找依赖的目录
 cwd = os.getcwd()
 # print(cwd, os.listdir()) # 定位到打开目录 而不是解压后的临时目录
@@ -21,11 +21,11 @@ except Exception as e:
 
 def flash_bin(port):
     try:
-        esp_config.flash(port)
+        res=esp_config.flash(port)
+        if res:
+            return "固件刷新成功"
+        return "固件刷新失败"
     except Exception as e:
-        return traceback.format_exc()
+        print(traceback.format_exc())
+        return "固件刷新失败"
 
-if __name__ == '__main__':
-    print(flash_bin('com3'))
-    import esp_config
-    esp_config.flash('com3')

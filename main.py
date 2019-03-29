@@ -19,19 +19,24 @@ class MyWindow(QMainWindow, Ui_Form):
         super().__init__()
         self.setupUi(self)
         self.pushButton.clicked.connect(self.main)
-        self.checkBox_3.stateChanged.connect(self.disable_cb2)
+        self.checkBox_3.stateChanged.connect(self.disable_op)
         self.setFixedSize(self.width(), self.height())#固定窗口大小
         self.setWindowIcon(QIcon('./image/icon.ico'))
         self.statusBar().showMessage(" by: youxinweizhi")
         self.get_com()
         self.get_bin()
 
-    def disable_cb2(self):
+    def disable_op(self):
         if self.checkBox_3.isChecked():
             self.comboBox_2.setDisabled(True)
+            # self.comboBox.setDisabled(True)
+            self.checkBox.setDisabled(True)
+            self.checkBox_2.setDisabled(True)
         else:
             self.comboBox_2.setDisabled(False)
-
+            # self.comboBox.setDisabled(False)
+            self.checkBox.setDisabled(False)
+            self.checkBox_2.setDisabled(False)
     def get_com(self):
         self.comboBox.addItems(control.list_serial())
 
@@ -49,9 +54,13 @@ class MyWindow(QMainWindow, Ui_Form):
 
     def main(self):
         self.com = self.comboBox.currentText().split(" - ",1)[0]
-        print(self.com)
+        # print(self.com)
         self.firmware = self.comboBox_2.currentText()
-        self.statusBar().showMessage(control.run(self.checkBox.isChecked(), self.erase_flash, self.flasher))
+        if self.checkBox_3.isChecked():
+            import get_config
+            self.statusBar().showMessage(get_config.flash_bin(self.com))
+        else:
+            self.statusBar().showMessage(control.run(self.checkBox.isChecked(), self.erase_flash, self.flasher))
 
 
 if __name__ == '__main__':

@@ -29,8 +29,7 @@ def flash(com):
     try:
         from esptool import main
         main()
+        return True
     except Exception as e:
         print(e)
-
-if __name__ == '__main__':
-    flash('com3')
+        return False

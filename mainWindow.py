@@ -56,5 +56,5 @@ class Ui_Form(object):
         self.label_3.setText(_translate("Form", "固件："))
         self.checkBox.setText(_translate("Form", "Erase"))
         self.checkBox_2.setText(_translate("Form", "Esp8266"))
-        self.checkBox_3.setText(_translate("Form", "Auto"))
+        self.checkBox_3.setText(_translate("Form", "Advanced"))
 
