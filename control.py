@@ -17,6 +17,11 @@ def list_serial():
     port_list = list(serial.tools.list_ports.comports())
     return [str(x) for x in port_list]
 
+def list_board():
+    borad_list=['Esp32','Esp8266']
+    return [str(x) for x in borad_list]
+
+
 def list_bin():
     result = []
     for root, dirs, files in os.walk(os.getcwd()):
@@ -36,12 +41,13 @@ def flash_erase(com):
 
 
 def flash_bin(st, com, firmware):
-    if st:
+    if st=="Esp8266":
         # res=os.system("esptool.exe --port %s --baud 115200 write_flash --flash_size=detect 0 %s " %(com,firmware))
         res = AutoFlash.run(com, esp_type="esp8266", firmware=firmware)
     else:
         # res=os.system("esptool.exe --chip esp32 --port %s --baud 115200 write_flash -z 0x1000  %s " %(com,firmware))
         res = AutoFlash.run(com, esp_type="esp32", firmware=firmware)
+
     if res:
         status = '固件刷新成功'
     else:
