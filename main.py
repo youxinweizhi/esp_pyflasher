@@ -8,6 +8,7 @@
 '''
 import control
 import sys
+import time
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from mainWindow import Ui_Form
 from PyQt5.QtGui import QIcon
@@ -21,7 +22,7 @@ class MyWindow(QMainWindow, Ui_Form):
         self.pushButton.clicked.connect(self.main)
         self.checkBox_3.stateChanged.connect(self.disable_op)
         self.setFixedSize(self.width(), self.height())  # 固定窗口大小
-        self.setWindowIcon(QIcon('./image/icon.ico'))
+        # self.setWindowIcon(QIcon('./image/icon.ico'))
         self.statusBar().showMessage("https://github.com/youxinweizhi/esp_pyflasher")
         self.get_com()
         self.get_bin()
@@ -57,7 +58,7 @@ class MyWindow(QMainWindow, Ui_Form):
     def check_com(self):
         result = len(self.com) > 1  # and open(com) test
         if result is False:
-            self.statusBar().showMessage('The selected serial port is not available')
+            self.statusBar().showMessage('The selected serial port is not exist')
         return result
 
     def get_bin(self):
@@ -69,24 +70,30 @@ class MyWindow(QMainWindow, Ui_Form):
     def erase(self):
         self.statusBar().showMessage('Start to erase firmware...')
         self.statusBar().showMessage(control.flash_erase(self.com))
+        time.sleep(1)
         self.flash()
-        self.pushButton.setDisabled(False)
 
     def flash(self):
         self.statusBar().showMessage('Start to flash firmware...')
-        self.statusBar().showMessage(control.flash_bin(self.board, self.com, self.firmware))
-        self.pushButton.setDisabled(False)
+        try:
+            self.statusBar().showMessage(control.flash_bin(self.board, self.com, self.firmware))
+        finally:
+            self.pushButton.setDisabled(False)
+            self.statusBar().showMessage('Ready To GO')
 
     def flash_adv(self):
         self.statusBar().showMessage('Start to advanced flash...')
-        import advanced
-        self.statusBar().showMessage(advanced.flash_bin(self.com))
-        self.pushButton.setDisabled(False)
+        try:
+            import advanced
+            self.statusBar().showMessage(advanced.flash_bin(self.com))
+        finally:
+            self.pushButton.setDisabled(False)
+            self.statusBar().showMessage('Ready To GO')
 
     def main(self):
         self.com = self.comboBox.currentText().split(" - ", 1)[0]
+        self.firmware = self.comboBox_2.currentText()
         if self.check_com():
-            self.firmware = self.comboBox_2.currentText()
             self.board = self.comboBox_3.currentText()
             print(self.com,self.firmware,self.board)
             self.pushButton.setDisabled(True)
