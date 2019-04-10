@@ -7,12 +7,13 @@
 @Github :https://github.com/youxinweizhi
 '''
 
+
 def run(com, esp_type, firmware):
     FLASH_START = "0x1000"
     FLASH_MODE = "dio"
     FLASH_FREQ = "40m"
     from esptool import main
-    import sys,traceback
+    import sys, traceback
     if esp_type == "esp8266":
         sys.argv = [
             'AutoFlash.py',

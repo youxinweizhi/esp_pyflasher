@@ -7,9 +7,10 @@
 @Github :https://github.com/youxinweizhi
 '''
 
+
 def run(com):
     from esptool import main
-    import sys,traceback
+    import sys, traceback
     sys.argv = [
         'AutoFlash.py',
         '--port', com,

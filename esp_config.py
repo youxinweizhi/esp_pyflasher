@@ -8,8 +8,8 @@
 '''
 import os
 
-def flash(com):
 
+def flash(com):
     FLASH_START = "0x1000"
     FLASH_MODE = "dio"
     FLASH_FREQ = "40m"
@@ -29,7 +29,7 @@ def flash(com):
     try:
         from esptool import main
         main()
-        return True
+        return None
     except Exception as e:
         print(e)
-        return False
+        return str(e)

@@ -9,6 +9,7 @@
 import sys, os, traceback
 import esp_config
 import threading
+
 # print(sys.path) # 查找依赖的目录
 cwd = os.getcwd()
 # print(cwd, os.listdir()) # 定位到打开目录 而不是解压后的临时目录
@@ -21,15 +22,10 @@ except Exception as e:
 
 def flash_bin(port):
     try:
-        res=esp_config.flash(port)
-        if res:
-            return "固件刷新成功"
-        return "固件刷新失败"
+        res = esp_config.flash(port)
+        return res
     except Exception as e:
-        print(traceback.format_exc())
-        return "固件刷新失败"
+        return str(e)
 
-def run(fun1):
-    t = threading.Thread(target=fun1)
-    t.start()
-    return "请等待..."
+if __name__ == '__main__':
+    flash_bin("COM3")

@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -80,9 +81,8 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "ESP Flash Tool"))
         self.pushButton.setText(_translate("Form", "Flash"))
-        self.label.setText(_translate("Form", "ComPort："))
-        self.label_3.setText(_translate("Form", "Firmware："))
+        self.label.setText(_translate("Form", "Com Port"))
+        self.label_3.setText(_translate("Form", "Firmware"))
         self.checkBox.setText(_translate("Form", "Erase"))
         self.checkBox_3.setText(_translate("Form", "Advanced"))
-        self.label_2.setText(_translate("Form", "Board    ："))
-
+        self.label_2.setText(_translate("Form", "Board"))
