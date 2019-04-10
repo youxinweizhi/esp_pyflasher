@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>esp_flashtool</string>
+   <string>ESP Flash Tool</string>
   </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
@@ -58,7 +58,7 @@
    </property>
    <property name="font">
     <font>
-     <family>微软雅黑</family>
+     <family>宋体</family>
      <pointsize>9</pointsize>
     </font>
    </property>
@@ -93,7 +93,7 @@
    </property>
    <property name="font">
     <font>
-     <family>微软雅黑</family>
+     <family>宋体</family>
      <pointsize>9</pointsize>
     </font>
    </property>
@@ -110,6 +110,11 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+    </font>
+   </property>
    <property name="text">
     <string>Erase</string>
    </property>
@@ -122,6 +127,11 @@
      <width>71</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+    </font>
    </property>
    <property name="text">
     <string>Advanced</string>
@@ -138,12 +148,12 @@
    </property>
    <property name="font">
     <font>
-     <family>微软雅黑</family>
+     <family>宋体</family>
      <pointsize>9</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Board   ：</string>
+    <string>Board    ：</string>
    </property>
   </widget>
   <widget class="QComboBox" name="comboBox_3">

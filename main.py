@@ -20,7 +20,7 @@ class MyWindow(QMainWindow, Ui_Form):
         self.checkBox_3.stateChanged.connect(self.disable_op)
         self.setFixedSize(self.width(), self.height())#固定窗口大小
         self.setWindowIcon(QIcon('./image/icon.ico'))
-        self.statusBar().showMessage(" by: youxinweizhi")
+        self.statusBar().showMessage("https://github.com/youxinweizhi/esp_pyflasher")
         self.get_com()
         self.get_bin()
         self.get_borad()
