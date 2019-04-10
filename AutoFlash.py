@@ -34,7 +34,6 @@ def run(com, esp_type, firmware):
         ]
     try:
         main()
-        return True
-    except:
-        print(traceback.format_exc())
-        return False
+        return None
+    except Exception as e:
+        return str(e)

@@ -33,10 +33,10 @@ def list_bin():
 def flash_erase(com):
     # res=os.system("esptool.exe --port %s erase_flash" %com)
     res = AutoErase.run(com)
-    if res:
+    if res is None:
         status = 'Flash 已经清空'
     else:
-        status = 'Flash 清空失败'
+        status = res
     return status
 
 
@@ -48,10 +48,10 @@ def flash_bin(st, com, firmware):
         # res=os.system("esptool.exe --chip esp32 --port %s --baud 115200 write_flash -z 0x1000  %s " %(com,firmware))
         res = AutoFlash.run(com, esp_type="esp32", firmware=firmware)
 
-    if res:
+    if res is None:
         status = '固件刷新成功'
     else:
-        status = '固件刷新失败'
+        status = res
     return status
 
 

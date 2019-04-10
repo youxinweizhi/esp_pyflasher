@@ -18,7 +18,7 @@ class MyWindow(QMainWindow, Ui_Form):
         self.setupUi(self)
         self.pushButton.clicked.connect(self.main)
         self.checkBox_3.stateChanged.connect(self.disable_op)
-        self.setFixedSize(self.width(), self.height())#固定窗口大小
+        # self.setFixedSize(self.width(), self.height())#固定窗口大小
         self.setWindowIcon(QIcon('./image/icon.ico'))
         self.statusBar().showMessage("https://github.com/youxinweizhi/esp_pyflasher")
         self.get_com()
@@ -29,7 +29,6 @@ class MyWindow(QMainWindow, Ui_Form):
             self.comboBox_2.setDisabled(True)
             self.comboBox_3.setDisabled(True)
             self.checkBox.setDisabled(True)
-            replay=QMessageBox.information(self,"警告","已开启高级模式",QMessageBox.Yes )
         else:
             self.comboBox_2.setDisabled(False)
             self.comboBox_3.setDisabled(False)
@@ -50,6 +49,7 @@ class MyWindow(QMainWindow, Ui_Form):
 
     def flasher(self):
         self.statusBar().showMessage('开始刷新固件...')
+
         self.statusBar().showMessage(control.flash_bin(self.board, self.com, self.firmware))
 
     def adv_flasher(self):
