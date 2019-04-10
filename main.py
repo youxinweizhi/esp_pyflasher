@@ -8,7 +8,7 @@
 '''
 import control
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow,QMessageBox
 from mainWindow import Ui_Form
 from PyQt5.QtGui import QIcon
 
@@ -27,12 +27,12 @@ class MyWindow(QMainWindow, Ui_Form):
     def disable_op(self):
         if self.checkBox_3.isChecked():
             self.comboBox_2.setDisabled(True)
-            # self.comboBox.setDisabled(True)
+            self.comboBox_3.setDisabled(True)
             self.checkBox.setDisabled(True)
-
+            replay=QMessageBox.information(self,"警告","已开启高级模式",QMessageBox.Yes )
         else:
             self.comboBox_2.setDisabled(False)
-            # self.comboBox.setDisabled(False)
+            self.comboBox_3.setDisabled(False)
             self.checkBox.setDisabled(False)
 
     def get_com(self):
