@@ -1,30 +1,34 @@
-import configparser  # 配置文件
 
-config = configparser.ConfigParser()
-"""生成configparser配置文件 ，字典的形式"""
-"""第一种写法"""
-config["DEFAULT"] = {'ServerAliveInterval': '45',
-                     'Compression': 'yes',
-                     'CompressionLevel': '9'}
-"""第二种写法"""
-config['bitbucket.org'] = {}
-config['bitbucket.org']['User'] = 'hg'
-"""第三种写法"""
-config['topsecret.server.com'] = {}
-topsecret = config['topsecret.server.com']
-topsecret['Host Port'] = '50022'  # mutates the parser
-topsecret['ForwardX11'] = 'no'  # same here
+import configparser
 
-config['DEFAULT']['ForwardX11'] = 'yes'
-"""写入后缀为.ini的文件"""
-with open('example.ini', 'w') as configfile:
-    config.write(configfile)
+config_name = 'config.ini'
 
-import configparser  # 配置文件
+def load_config():
+    config = configparser.ConfigParser()
+    config.read(config_name)
+    print("all is ", config.defaults())
+    return (config.defaults())
+    print("all is ", config.sections())
+    return config.sections()
 
-config = configparser.ConfigParser()
-config.read("example.ini")
+def save_config():
+    config = configparser.ConfigParser()
+    config["DEFAULT"] = {
+        'auto': 'False',
+        'erase': 'False',
+        'advanced': 'False',
+    }
 
-print(config.defaults())
+    with open(config_name, 'w') as file:
+        config.write(file)
 
-print("所有节点==>", config.sections())
+def get_confg_dict():
+    config = load_config()
+    if len(config) is 0:
+        save_config()
+        config = load_config()
+    return config
+
+if __name__ == '__main__':
+    config = get_confg_dict()
+    print(config['auto'] == 'False')

@@ -26,6 +26,20 @@ class MyWindow(QMainWindow, Ui_Form):
         self.get_com()
         self.get_bin()
         self.get_borad()
+        self.get_config()
+
+    def get_config(self):
+        import config
+        config = config.get_confg_dict()
+
+        if 'erase' in config:
+            self.checkBox.setCheckState(config['erase'] == 'True')
+
+        if 'advanced' in config:
+            self.checkBox_3.setCheckState(config['advanced'] == 'True')
+
+        if 'auto' in config and config['auto'] == 'True':
+            self.main()
 
     def disable_op(self):
         if self.checkBox_3.isChecked():
