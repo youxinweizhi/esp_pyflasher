@@ -12,22 +12,35 @@ import time
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from mainWindow import Ui_Form
 from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import QTimer
 import threading
 mutex = threading.Lock()
 
 class MyWindow(QMainWindow, Ui_Form):
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.pushButton.clicked.connect(self.main)
         self.checkBox_3.stateChanged.connect(self.disable_op)
+
+        # self.comboBox.highlighted.connect(self.get_com)
+        # self.comboBox.activated.connect(self.get_com)
+
         self.setFixedSize(self.width(), self.height())  # 固定窗口大小
         # self.setWindowIcon(QIcon('./image/icon.ico'))
         self.statusBar().showMessage("https://github.com/youxinweizhi/esp_pyflasher")
+
+        self.list_serial = []
+
         self.get_com()
         self.get_bin()
         self.get_borad()
         self.get_config()
+
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.get_com)
+        self.timer.start(3000)
 
     def get_config(self):
         import config
@@ -53,7 +66,13 @@ class MyWindow(QMainWindow, Ui_Form):
             self.checkBox.setDisabled(False)
 
     def get_com(self):
-        self.comboBox.addItems(control.list_serial())
+        tmp = control.list_serial()
+        # print(tmp)
+        if len(tmp) != len(self.list_serial):
+            self.list_serial = tmp
+            self.comboBox.clear()
+            self.comboBox.addItems(tmp)
+            # print(self.comboBox.count())
 
     def check_com(self):
         result = len(self.com) > 1  # and open(com) test
