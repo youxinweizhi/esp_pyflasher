@@ -7,7 +7,7 @@
 @Github :https://github.com/youxinweizhi
 '''
 import sys, os, traceback
-import esp_config
+# import esp_config # 封装前不需要
 import threading
 
 # print(sys.path) # 查找依赖的目录
